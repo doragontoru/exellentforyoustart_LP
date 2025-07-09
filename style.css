@@ -190,6 +190,8 @@ BEM Blocks - Modern & Cool
     gap: calc(var(--spacing-base) * 6);
 }
 .proof__logo-item img {
+    max-height: 150px; /* Control logo size */
+    width: auto; /* Maintain aspect ratio */
     filter: brightness(0.7) contrast(1.2) grayscale(50%);
     opacity: 0.5;
     transition: all 300ms ease;
