@@ -1,0 +1,371 @@
+/* ---
+Variables & Modern Settings
+--- */
+:root {
+    /* Colors - Cool, Modern Dark Theme */
+    --color-background: #0a0a0a; /* Almost black for deep contrast */
+    --color-surface: #1a1a1a;    /* Surface color for cards, slightly lighter */
+    --color-primary: #007CF0;   /* Electric Blue for primary actions and highlights */
+    --color-primary-glow: rgba(0, 124, 240, 0.5);
+    --color-text-primary: #f0f0f0; /* Primary text, slightly off-white */
+    --color-text-secondary: #a0a0a0; /* Secondary text for less emphasis */
+    --color-border: rgba(255, 255, 255, 0.1);
+
+    /* Fonts */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Noto Sans JP', sans-serif;
+
+    /* Layout */
+    --container-width: 1120px;
+    --spacing-base: 8px;
+}
+
+/* ---
+Global & Animation Styles
+--- */
+@keyframes kenburns-zoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-secondary);
+    line-height: 1.8;
+    color: var(--color-text-primary);
+    background-color: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    letter-spacing: 0.5px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #fff;
+}
+
+section {
+    overflow: hidden; /* Prevent AOS animations from showing scrollbars */
+}
+
+/* ---
+Layout Container
+--- */
+.hero__inner, .proof__inner, .benefits__inner, .testimonials__inner, .faq__inner, .closing__inner, .footer__inner {
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding: calc(var(--spacing-base) * 12) calc(var(--spacing-base) * 3); /* 96px 24px */
+}
+
+@media (max-width: 768px) {
+    .hero__inner, .proof__inner, .benefits__inner, .testimonials__inner, .faq__inner, .closing__inner, .footer__inner {
+        padding: calc(var(--spacing-base) * 10) calc(var(--spacing-base) * 2); /* 80px 16px */
+    }
+}
+
+/* ---
+BEM Blocks - Modern & Cool
+--- */
+
+/* Hero Section */
+.hero {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('img/DSC_0822.jpg') no-repeat center center;
+    background-size: cover;
+    animation: kenburns-zoom 20s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+.hero__title {
+    font-size: 4.5rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
+    margin-bottom: calc(var(--spacing-base) * 2);
+}
+
+.hero__subtitle {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: calc(var(--spacing-base) * 5);
+    color: var(--color-text-secondary);
+}
+
+.hero__cta, .closing__cta {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #fff;
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    padding: calc(var(--spacing-base) * 2) calc(var(--spacing-base) * 5);
+    border-radius: 50px;
+    border: 1px solid var(--color-primary);
+    transition: all 160ms ease;
+    box-shadow: 0 0 15px var(--color-primary-glow), 0 0 20px var(--color-primary-glow);
+}
+
+.hero__cta:hover, .closing__cta:hover {
+    background: transparent;
+    color: var(--color-primary);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 25px var(--color-primary-glow), 0 0 35px var(--color-primary-glow);
+}
+
+@media (max-width: 768px) {
+    .hero__title { font-size: 3rem; }
+    .hero__subtitle { font-size: 1.1rem; }
+}
+
+/* Shared Section Styles */
+.proof, .benefits, .testimonials, .faq, .closing {
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.proof__heading, .benefits__heading, .testimonials__heading, .faq__heading, .closing__heading {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: var(--spacing-base);
+}
+
+.proof__subheading, .benefits__subheading {
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin-bottom: calc(var(--spacing-base) * 8);
+}
+
+/* Proof Section */
+.proof__logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: calc(var(--spacing-base) * 6);
+}
+.proof__logo-item img {
+    filter: brightness(0.7) contrast(1.2) grayscale(50%);
+    opacity: 0.5;
+    transition: all 300ms ease;
+}
+.proof__logo-item img:hover {
+    filter: brightness(1) contrast(1) grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+.proof__note {
+    margin-top: calc(var(--spacing-base) * 4);
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+/* Benefits Section (Glassmorphism) */
+.benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: calc(var(--spacing-base) * 4);
+    margin-top: calc(var(--spacing-base) * 6);
+}
+.benefit-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    padding: calc(var(--spacing-base) * 5);
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 200ms ease, background 200ms ease;
+}
+.benefit-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(0, 124, 240, 0.5);
+}
+.benefit-card__icon {
+    margin: 0 auto calc(var(--spacing-base) * 3);
+    width: 80px;
+    height: 80px;
+}
+.benefit-card__icon img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary-glow);
+}
+.benefit-card__title {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-base);
+    color: var(--color-primary);
+}
+.benefit-card__text {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+}
+
+/* Testimonials Section */
+.testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-base) * 4);
+    margin-top: calc(var(--spacing-base) * 6);
+}
+.testimonial-card {
+    background-color: var(--color-surface);
+    padding: calc(var(--spacing-base) * 4);
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    border-left: 5px solid var(--color-primary);
+}
+.testimonial-card__text {
+    margin-bottom: calc(var(--spacing-base) * 2);
+    font-size: 1.1rem;
+}
+.testimonial-card__author {
+    font-weight: 700;
+    text-align: right;
+    color: var(--color-primary);
+}
+
+/* FAQ Section */
+.faq__list {
+    max-width: 800px;
+    margin: calc(var(--spacing-base) * 8) auto 0;
+}
+.faq-item {
+    background-color: var(--color-surface);
+    margin-bottom: calc(var(--spacing-base) * 2);
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    transition: background-color 200ms ease;
+}
+.faq-item[open] {
+    background-color: rgba(0, 124, 240, 0.1);
+}
+.faq-item__question {
+    padding: calc(var(--spacing-base) * 2.5) calc(var(--spacing-base) * 3);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.faq-item__question::-webkit-details-marker { display: none; }
+.faq-item__question::after {
+    content: '+';
+    font-size: 2rem;
+    color: var(--color-primary);
+    transition: transform 200ms ease;
+}
+.faq-item[open] > .faq-item__question::after {
+    transform: rotate(45deg);
+}
+.faq-item__answer {
+    padding: 0 calc(var(--spacing-base) * 3) calc(var(--spacing-base) * 3);
+    color: var(--color-text-secondary);
+    border-top: 1px solid var(--color-border);
+}
+
+/* Closing Section */
+.closing {
+    background: linear-gradient(to top, #0a0a0a, rgba(10,10,10,0.7));
+    text-align: center;
+    border-bottom: none;
+}
+.closing__heading {
+    color: #fff;
+    font-size: 2.8rem;
+}
+.closing__text {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    margin: calc(var(--spacing-base) * 2) 0 calc(var(--spacing-base) * 5);
+}
+.closing__note {
+    margin-top: calc(var(--spacing-base) * 3);
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+/* Footer */
+.footer {
+    background-color: #0a0a0a;
+    border-top: 1px solid var(--color-border);
+}
+.footer__inner {
+    padding: calc(var(--spacing-base) * 5) calc(var(--spacing-base) * 3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--spacing-base) * 2);
+}
+.footer__nav {
+    display: flex;
+    gap: calc(var(--spacing-base) * 4);
+}
+.footer__link {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    transition: color 200ms ease;
+}
+.footer__link:hover {
+    color: var(--color-primary);
+}
+.footer__copy {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .proof__heading, .benefits__heading, .testimonials__heading, .faq__heading, .closing__heading { font-size: 2.2rem; }
+}
